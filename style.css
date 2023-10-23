@@ -42,7 +42,9 @@ h3 {
 }
 
 div.explanation[role="article"] h3 {
-  color: #19868e;
+  color: #8e1986;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 /* Content Paragraph Styles */
@@ -69,10 +71,6 @@ div.explanation[role="article"] h3 {
   margin-bottom: 1.5em;
 }
 
-/* Footer Styles */
-footer {
-  margin-bottom: 2.5em;
-}
 /* Link Styles */
 a {
   color: #868e19;
@@ -81,14 +79,29 @@ a {
 
 a:hover {
   text-decoration: underline;
+  background-color: #595f0d;
+  cursor: pointer;
+}
+
+/* Footer Styles */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 2.5em;
 }
 
 footer > a {
   color: #f5f5f5;
   background-color: #868e19;
   border-radius: 0.25em;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   margin-right: 1em;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .wrapper a {
@@ -99,6 +112,68 @@ a.designer-name {
   color: #888;
 }
 
-li:nth-child(2n + 1) {
-  background-color: #eee;
+/* Sidebar Styles */
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0.3rem;
+}
+
+.design-selection li,
+.zen-resources li {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.design-selection li:nth-child(odd),
+.zen-resources li:nth-child(odd) {
+  background-color: #fff;
+  border-radius: 0.25rem;
+}
+
+/* Make design name, "by" text, and designer name stack vertically */
+.design-selection li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5em;
+}
+
+/* Grid area layout  */
+.page-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas:
+    "header header header header header"
+    "main main main main sidebar";
+  grid-gap: 20px;
+}
+
+#zen-intro,
+.sidebar,
+#zen-supporting,
+footer {
+  padding: 1em;
+  border-radius: 0.25rem;
+}
+
+#zen-intro {
+  grid-area: header;
+  background-color: #f0f0f0;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #f9f9f9;
+}
+
+#zen-supporting {
+  grid-area: main;
+  background-color: #f9f9f9;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #333;
+  color: #fff;
 }
