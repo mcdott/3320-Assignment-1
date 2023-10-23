@@ -1,14 +1,11 @@
-/* TODO use 4 more selectors from:
-3. id selector
-7. attribute selector
-8. wild card selector
-9. group selector
-10. Combined class selector
- */
-
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap");
 
 /* Base Styles */
+* {
+  margin: 0;
+}
+
 body {
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -20,9 +17,11 @@ body {
 
 /* Heading Styles */
 h1 {
-  font-size: 2.4em;
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
   font-weight: bold;
   color: #8e1986;
+  margin-bottom: 1.5rem;
 }
 
 h2,
@@ -31,19 +30,23 @@ h3 {
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: #19868e;
+  margin-bottom: 2rem;
 }
 
 h3 {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   color: #444;
-  margin-top: 1.25em;
-  margin-bottom: 1em;
+  margin-bottom: 1.25rem;
+}
+
+div.explanation[role="article"] h3 {
+  color: #19868e;
 }
 
 /* Content Paragraph Styles */
-.summary,
+#zen-summary,
 .preamble,
 .explanation,
 .participation,
@@ -58,9 +61,18 @@ h3 {
 .participation p:first-of-type,
 .benefits p:first-of-type,
 .requirements p:first-of-type {
-  font-size: 1.05em;
+  font-size: 1.05rem;
 }
 
+.design-selection li:last-of-type,
+.design-archives {
+  margin-bottom: 1.5em;
+}
+
+/* Footer Styles */
+footer {
+  margin-bottom: 2.5em;
+}
 /* Link Styles */
 a {
   color: #868e19;
