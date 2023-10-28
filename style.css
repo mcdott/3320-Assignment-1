@@ -11,17 +11,19 @@ body {
   font-size: 16px;
   color: #555;
   line-height: 1.4em;
-  background-color: #fff;
-  padding: 3em;
+  /* TODO add gradient to background colour, compensate for 0 padding */
+  background-color: #781e1e;
+  padding: 0em;
 }
 
 /* Heading Styles */
 h1 {
   font-family: "Merriweather", serif;
-  font-size: 2.4rem;
+  font-size: 5rem;
   font-weight: bold;
   color: #8e1986;
-  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  transform: translateX(-10%);
 }
 
 h2,
@@ -30,9 +32,11 @@ h3 {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2.4rem;
   color: #19868e;
-  margin-bottom: 2rem;
+  position: absolute;
+  bottom: 2rem;
+  transform: translateX(40%);
 }
 
 h3 {
@@ -45,6 +49,7 @@ div.explanation[role="article"] h3 {
   color: #8e1986;
   font-size: 1.5rem;
   font-weight: bold;
+  margin-top: 0.5em;
 }
 
 /* Content Paragraph Styles */
@@ -89,7 +94,7 @@ footer {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 2.5em;
+  margin-bottom: 1em;
 }
 
 footer > a {
@@ -139,13 +144,13 @@ a.designer-name {
   padding: 0.5em;
 }
 
-/* Grid area layout  */
+/* Page layout  */
 .page-wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-areas:
-    "header header header header header"
-    "main main main main sidebar";
+    "intro intro intro intro intro"
+    "sidebar main main main main";
   grid-gap: 20px;
 }
 
@@ -158,7 +163,7 @@ footer {
 }
 
 #zen-intro {
-  grid-area: header;
+  grid-area: intro;
   background-color: #f0f0f0;
 }
 
@@ -176,4 +181,70 @@ footer {
   grid-area: footer;
   background-color: #333;
   color: #fff;
+}
+
+/* Intro layout  */
+.intro {
+  display: flex;
+  flex-direction: column;
+}
+
+header h1,
+header h2 {
+  background-color: #f0f0f0;
+  padding: 0.5em 1em;
+  border-radius: 0.25rem;
+}
+
+/* .header {
+  grid-area: header;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.summary {
+  grid-area: summary;
+  background-color: #f9f9f9;
+  padding: 2rem;
+}
+
+.preamble {
+  grid-area: preamble;
+} */
+
+/* Header layout */
+.intro header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1580685989905-e3d31c325b5f?auto=format&fit=crop&q=60&w=700&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8b3JpZ2FtaXxlbnwwfDB8MHx8fDA%3D");
+  background-size: cover;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+/* TODO responsiveness */
+/* Small screens (e.g., mobile phones) */
+@media screen and (max-width: 480px) {
+  /* Add styles for small screens here */
+}
+
+/* Medium screens (e.g., tablets) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Add styles for medium screens here */
+}
+
+/* Large screens (e.g., desktops) */
+@media screen and (min-width: 769px) {
+  /* Add styles for large screens here */
+}
+
+/* Extra-large screens (e.g., wide desktops) */
+@media screen and (min-width: 1200px) {
+  /* Add styles for extra-large screens here */
 }
