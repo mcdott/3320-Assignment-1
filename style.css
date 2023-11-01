@@ -14,29 +14,40 @@ body {
   /* TODO add gradient to background colour, compensate for 0 padding */
   background-color: #781e1e;
   padding: 0em;
+  overflow-x: hidden;
 }
 
 /* Heading Styles */
 h1 {
   font-family: "Merriweather", serif;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: bold;
   color: #8e1986;
-  margin-top: 3rem;
-  transform: translateX(-10%);
+  margin: 0.15rem 0.5rem 0rem 0.5rem;
+  transform: translateX(-15%);
+  padding: 3rem 5rem 3rem 5rem;
 }
 
-h2,
-h3 {
-  font-weight: lighter;
+h1,
+h2 {
+  background-image: radial-gradient(
+    ellipse at center,
+    #f0f0f0 40% 20%,
+    rgba(240, 240, 240, 0) 80%
+  );
+  border-radius: 0.25rem;
 }
 
 h2 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #19868e;
-  position: absolute;
-  bottom: 2rem;
-  transform: translateX(40%);
+  margin: 0.5rem;
+  transform: translateX(-90%);
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+h3 {
+  font-weight: lighter;
 }
 
 h3 {
@@ -62,13 +73,12 @@ div.explanation[role="article"] h3 {
   margin-bottom: 2.5em;
 }
 
-.summary p:first-of-type,
 .preamble p:first-of-type,
 .explanation p:first-of-type,
 .participation p:first-of-type,
 .benefits p:first-of-type,
 .requirements p:first-of-type {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
 .design-selection li:last-of-type,
@@ -84,7 +94,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-  background-color: #595f0d;
   cursor: pointer;
 }
 
@@ -107,6 +116,14 @@ footer > a {
   text-align: center;
   font-weight: bold;
   transition: background-color 0.3s ease;
+
+  /* &:hover {
+    background-color: #595f0d;
+  } */
+}
+
+footer > a:hover {
+  background-color: #595f0d;
 }
 
 .wrapper a {
@@ -117,6 +134,12 @@ a.designer-name {
   color: #888;
 }
 
+/* TODO clean up where these go */
+
+footer {
+  padding: 1em;
+  border-radius: 0.25rem;
+}
 /* Sidebar Styles */
 
 .sidebar ul {
@@ -147,19 +170,12 @@ a.designer-name {
 /* Page layout  */
 .page-wrapper {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "intro intro intro intro intro"
-    "sidebar main main main main";
-  grid-gap: 20px;
-}
-
-#zen-intro,
-.sidebar,
-#zen-supporting,
-footer {
-  padding: 1em;
-  border-radius: 0.25rem;
+    "intro intro intro"
+    "sidebar main main"
+    "requirements requirements requirements";
+  /* grid-gap: 20px; */
 }
 
 #zen-intro {
@@ -177,52 +193,42 @@ footer {
   background-color: #f9f9f9;
 }
 
+.requirements {
+  grid-area: requirements;
+  background-color: #f9f9f9;
+}
+
 footer {
   grid-area: footer;
   background-color: #333;
   color: #fff;
-}
-
-/* Intro layout  */
-.intro {
-  display: flex;
-  flex-direction: column;
-}
-
-header h1,
-header h2 {
-  background-color: #f0f0f0;
-  padding: 0.5em 1em;
-  border-radius: 0.25rem;
-}
-
-/* .header {
-  grid-area: header;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  width: 100%;
 }
 
 .summary {
-  grid-area: summary;
+  /* grid-area: summary; */
+  font-size: 1.2rem;
   background-color: #f9f9f9;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .preamble {
   grid-area: preamble;
-} */
+}
 
 /* Header layout */
 .intro header {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   background-image: url("https://images.unsplash.com/photo-1580685989905-e3d31c325b5f?auto=format&fit=crop&q=60&w=700&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8b3JpZ2FtaXxlbnwwfDB8MHx8fDA%3D");
   background-size: cover;
-  height: 50vh;
+  height: calc(65vh - 3rem);
+  width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
