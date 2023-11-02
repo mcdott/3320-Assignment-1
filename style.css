@@ -8,17 +8,18 @@
 
   /* Colors */
   --color-primary-text: #555;
-  --color-background: #781e1e;
+  --color-secondary-text: #f9f9f9;
   --color-heading1: #8e1986;
   --color-heading2: #19868e;
   --color-heading3: #444;
+  --color-primary-bg: hsla(0, 0%, 100%, 0.96);
+  --color-secondary-bg: hsla(184, 80%, 39%, 0.65);
+  --color-tertiary-bg: hsla(303, 53%, 30%, 0.9);
   --color-link: #868e19;
   --color-link-hover: #595f0d;
-  --color-main-bg: #f9f9f9;
-  --color-sidebar-bg: #f9f9f9;
-  --color-sidebar-item-bg: #fff;
+  --color-main-bg: hsla(0, 0%, 100%, 0.96);
+  --color-sidebar-item-bg: hsla(0, 0%, 100%, 0.2);
   --color-footer-bg: #333;
-  --color-footer-text: #f5f5f5;
 }
 
 /* Base Styles */
@@ -29,7 +30,9 @@
 body {
   font-family: var(--font-primary);
   color: var(--color-primary-text);
-  background-color: var(--color-background);
+  background-image: url("https://images.unsplash.com/photo-1580685989905-e3d31c325b5f?auto=format&fit=crop&q=60&w=700&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8b3JpZ2FtaXxlbnwwfDB8MHx8fDA%3D");
+  /* background-image: url(cathy-mu-3_Y2wnIBjPY-unsplash.jpg); */
+  background-size: cover;
   line-height: 1.4em;
   font-size: 16px;
   padding: 0em;
@@ -86,6 +89,10 @@ h3 {
   margin-bottom: 1.25rem;
 }
 
+.preamble h3 {
+  color: var(--color-secondary-text);
+}
+
 div.explanation[role="article"] h3 {
   color: #8e1986;
   font-size: 1.5rem;
@@ -93,14 +100,19 @@ div.explanation[role="article"] h3 {
   margin-top: 0.5em;
 }
 
+.intro header,
+.intro .summary {
+  margin-bottom: 0;
+}
+
 /* Content Paragraph Styles */
-#zen-summary,
-.preamble,
+
 .explanation,
 .participation,
 .benefits,
 .requirements {
-  margin-bottom: 2.5em;
+  background-color: var(--color-main-bg);
+  padding: 1.5em;
 }
 
 .explanation p:first-of-type,
@@ -108,6 +120,11 @@ div.explanation[role="article"] h3 {
 .benefits p:first-of-type,
 .requirements p:first-of-type {
   font-size: 1.1rem;
+}
+
+.summary p:nth-of-type(2) {
+  font-size: 1rem;
+  margin-top: 1.5rem;
 }
 
 .design-selection li:last-of-type,
@@ -134,11 +151,12 @@ footer {
   gap: 10px;
   justify-content: center;
   margin-bottom: 1em;
+  background-color: var(--color-footer-bg);
 }
 
 footer > a {
-  background-color: var(--color-footer-bg);
-  color: var(--color-footer-text);
+  background-color: var(--color-link);
+  color: var(--color-secondary-text);
   border-radius: 0.25em;
   padding: 0.5em 1em;
   margin-right: 1em;
@@ -175,19 +193,12 @@ footer {
 .sidebar ul {
   list-style: none;
   padding-left: 0.3rem;
-  background-color: var(--color-sidebar-bg);
 }
 
 .design-selection li,
 .zen-resources li {
   padding: 0.5em;
   margin-bottom: 0.5em;
-}
-
-.design-selection li:nth-child(odd),
-.zen-resources li:nth-child(odd) {
-  background-color: var(--color-sidebar-item-bg);
-  border-radius: 0.25rem;
 }
 
 /* Make design name, "by" text, and designer name stack vertically */
@@ -201,33 +212,28 @@ footer {
 /* Page layout  */
 .page-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-areas:
-    "intro intro intro"
-    "requirements requirements requirements"
-    "sidebar main main";
-  /* "sidebar main main"; */
-  /* grid-gap: 20px; */
+    "intro intro intro intro intro"
+    "sidebar main main main main";
 }
-
-/* #zen-intro {
-  grid-area: intro;
-  background-color: #f0f0f0;
-} */
 
 .sidebar {
   grid-area: sidebar;
-  background-color: var(--color-main-bg);
+  background-color: var(--color-secondary-bg);
+}
+
+.design-selection li:nth-child(odd),
+.zen-resources li:nth-child(odd) {
+  background-color: var(--color-sidebar-item-bg);
 }
 
 #zen-supporting {
   grid-area: main;
-  background-color: var(--color-main-bg);
 }
 
 .requirements {
   grid-area: requirements;
-  background-color: var(--color-main-bg);
 }
 
 footer {
@@ -242,8 +248,8 @@ footer {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-areas:
-    "hero hero hero hero preamble"
-    "summary summary summary summary preamble";
+    "hero hero hero hero hero"
+    "summary preamble preamble preamble preamble";
 }
 
 .intro > :not(.preamble, .summary) {
@@ -252,9 +258,10 @@ footer {
 
 .preamble {
   grid-area: preamble;
-  display: initial;
-  background-color: var(--color-main-bg);
-  padding: 1.5rem;
+  background-color: var(--color-tertiary-bg);
+  color: var(--color-secondary-text);
+  padding: 2rem;
+  margin-bottom: 3em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -263,9 +270,10 @@ footer {
 
 .summary {
   grid-area: summary;
-  background-color: var(--color-main-bg);
+  background-color: var(--color-secondary-bg);
+  color: var(--color-secondary-text);
   font-size: 1.2rem;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -280,7 +288,7 @@ footer {
   align-items: center;
   background-image: url("https://images.unsplash.com/photo-1580685989905-e3d31c325b5f?auto=format&fit=crop&q=60&w=700&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8b3JpZ2FtaXxlbnwwfDB8MHx8fDA%3D");
   background-size: cover;
-  height: calc(65vh - 3rem);
+  height: calc(70vh - 3rem);
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
